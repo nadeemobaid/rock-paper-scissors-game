@@ -1,72 +1,85 @@
 const choices = ['rock', 'paper', 'scissors'];
 
-function playGame() {
 
+function getCompChoice(choices) {
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+function getPlayerChoice() {
+    let input = prompt("WELCOME to \"rock paper scissors GAME\"!!");
+    const inputRegex = /rock|paper|scissors/i;
+    let playerChoice = "";
+
+
+    if (inputRegex.test(input)) {
+        playerChoice = input.toLowerCase();
+    } else {
+        alert("ERROR!! \nEnter only \'rock paper scissors\' ");
+        input = prompt("your Choice: ",);
+        if (inputRegex.test(input)) {
+            playerChoice = input.toLowerCase();
+        } else {
+            alert("System Will decide for you.")
+            playerChoice = getCompChoice(choices);
+        }
+    }
+    return playerChoice;
+}
+
+function theWinner(score1, score2) {
+     let playerName = prompt("Your Name: ","Player");
+    if (score1 === score2) {
+        return "UGH!!! TIE";
+    } else if (score1 > score2) {
+        return `${playerName} WINNER`;
+    } else {
+        return "Computer --WINNER";
+    }
+}
+
+function playGame() {
     let compScore = 0;
     let playerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-
-
-        function getCompChoice(choices) {
-            let randomIndex = Math.floor(Math.random() * choices.length);
-            return choices[randomIndex];
-        }
-
-        //  error i have to learn  regex  to do perform patter/ match
-        function getPlayerChoice() {
-            let input = prompt("WELCOME \n to \n rock paper scissors GAME!!");
-            if ((input !== "rock") && (input !== "paper") && (input !== "scissors")) {
-                alert("ERRO \n Enter only -- paper rock scissors");
-                input = prompt("ENTER ONLY \n paper rock scissors");
-            }
-            return input.toLowerCase();
-        }
+    for (let i = 0; i < 3; i++) {
 
         let playerSelection = getPlayerChoice();
         let computerSelection = getCompChoice(choices);
 
-        console.log("Player: " + playerSelection + "\n" + "Computer: " + computerSelection);
+        console.log("You: " + playerSelection + "\n" + "Computer: " + computerSelection);
 
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === computerSelection) {
-                return "Tie";
-            } else if (playerSelection === "rock" && computerSelection === "paper") {
+        function playRound(choice1, choice2) {
+            let result = "";
+            if (choice1 === choice2) {
+                result = "Tie";
+            } else if (choice1 === "rock" && choice2 === "paper") {
                 compScore += 1;
-                return "com: WIN \n you: LOSE";
-            } else if (playerSelection === "rock" && computerSelection === "scissors") {
+                result = "You Lose! paper beats rock.";
+            } else if (choice1 === "rock" && choice2 === "scissors") {
                 playerScore += 1;
-                return "you: WIN \n com: lose";
-            } else if (playerSelection === "scissors" && computerSelection === "paper") {
+                result = "You Win! rock beats scissors.";
+            } else if (choice1 === "scissors" && choice2 === "paper") {
                 playerScore += 1;
-                return "you: WIN \n com: lose";
-            } else if (playerSelection === "scissors" && computerSelection === "rock") {
+                result =  "You Win! scissors beats paper.";
+            } else if (choice1 === "scissors" && choice2 === "rock") {
                 compScore += 1;
-                return "com: WIN \n you: LOSE";
-            } else if (playerSelection === "paper" && computerSelection === "rock") {
+                result = "You Lose! rock beats scissors.";
+            } else if (choice1 === "paper" && choice2 === "rock") {
                 playerScore += 1;
-                return "you: WIN \n com: lose";
+                result =  "You Win! paper beats rock.";
             } else {
                 compScore += 1;
-                return "com: WIN \n you: LOSE";
+                result = "You Lose! scissors beats paper";
             }
+            return result;
         }
-        
+
         console.log(playRound(playerSelection, computerSelection));
-
     }
 
-    console.log("Comp point: " + compScore + " Your point: " + playerScore);
+    console.log("Computer point: " + compScore + " \nYour point: " + playerScore);
 
-    function theWinner(playerScore, compScore) {
-        if (playerScore === compScore) {
-            return "UGH no one worthy enough to win.";
-        } else if (playerScore > compScore) {
-            return "you THE WINNER";
-        } else {
-            return "COMPUTER WINNER";
-        }
-    }
 
     console.log(theWinner(playerScore, compScore));
 
