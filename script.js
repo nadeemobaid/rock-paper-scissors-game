@@ -7,7 +7,7 @@ function getCompChoice(choices) {
 }
 
 function getPlayerChoice() {
-    let input = prompt("WELCOME to \"rock paper scissors GAME\"!!");
+    let input = prompt("You choose: ");
     const inputRegex = /rock|paper|scissors/i;
     let playerChoice = "";
 
@@ -41,6 +41,7 @@ function theWinner(score1, score2) {
 function playGame() {
     let compScore = 0;
     let playerScore = 0;
+    confirm("Welcome --play \nrock paper scissors!!")
 
     for (let i = 0; i < 3; i++) {
 
