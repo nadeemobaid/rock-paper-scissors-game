@@ -64,7 +64,7 @@ function playGame() {
     let playerScore = 0;
     alert("Welcome --play \nrock paper scissors!!");
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 5; i++) {
         const strRound = `Round ${i+1}:`;
         const loseReg = /lose/i;
         const winReg = /win/i;
