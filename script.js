@@ -27,6 +27,27 @@ function getPlayerChoice() {
     return playerChoice;
 }
 
+function playRound(choice1, choice2) {
+    let result = "";
+    if (choice1 === choice2) {
+        result = "Tie";
+    } else if (choice1 === "rock" && choice2 === "paper") {
+        result = "You Lose! paper beats rock.";
+    } else if (choice1 === "rock" && choice2 === "scissors") {
+        result = "You Win! rock beats scissors.";
+    } else if (choice1 === "scissors" && choice2 === "paper") {
+        result =  "You Win! scissors beats paper.";
+    } else if (choice1 === "scissors" && choice2 === "rock") {
+        result = "You Lose! rock beats scissors.";
+    } else if (choice1 === "paper" && choice2 === "rock") {
+        result =  "You Win! paper beats rock.";
+    } else {
+        
+        result = "You Lose! scissors beats paper";
+    }
+    return result;
+}
+
 function theWinner(score1, score2) {
      let playerName = prompt("Your Name: ","Player");
     if (score1 === score2) {
@@ -41,48 +62,32 @@ function theWinner(score1, score2) {
 function playGame() {
     let compScore = 0;
     let playerScore = 0;
-    confirm("Welcome --play \nrock paper scissors!!")
+    alert("Welcome --play \nrock paper scissors!!");
 
-    for (let i = 0; i < 3; i++) {
-
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getCompChoice(choices);
+    for (let i = 0; i < 2; i++) {
+        const strRound = `Round ${i+1}:`;
+        const loseReg = /lose/i;
+        const winReg = /win/i;
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getCompChoice(choices);
 
         console.log("You: " + playerSelection + "\n" + "Computer: " + computerSelection);
+    
+        const roundResult = playRound(playerSelection, computerSelection);
+        console.log(strRound,roundResult);
 
-        function playRound(choice1, choice2) {
-            let result = "";
-            if (choice1 === choice2) {
-                result = "Tie";
-            } else if (choice1 === "rock" && choice2 === "paper") {
-                compScore += 1;
-                result = "You Lose! paper beats rock.";
-            } else if (choice1 === "rock" && choice2 === "scissors") {
-                playerScore += 1;
-                result = "You Win! rock beats scissors.";
-            } else if (choice1 === "scissors" && choice2 === "paper") {
-                playerScore += 1;
-                result =  "You Win! scissors beats paper.";
-            } else if (choice1 === "scissors" && choice2 === "rock") {
-                compScore += 1;
-                result = "You Lose! rock beats scissors.";
-            } else if (choice1 === "paper" && choice2 === "rock") {
-                playerScore += 1;
-                result =  "You Win! paper beats rock.";
-            } else {
-                compScore += 1;
-                result = "You Lose! scissors beats paper";
-            }
-            return result;
+        if (winReg.test(roundResult)){
+            playerScore += 1;
+        } else if (loseReg.test(roundResult)){
+            compScore +=1;
         }
 
-        console.log(playRound(playerSelection, computerSelection));
-    }
+     }
 
     console.log("Computer point: " + compScore + " \nYour point: " + playerScore);
 
 
-    console.log(theWinner(playerScore, compScore));
+     console.log(theWinner(playerScore, compScore));
 
 }
 
