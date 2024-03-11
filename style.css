@@ -13,9 +13,8 @@ body {
 }
 
 .game-container {
-    opacity: ;
-    width: 70vw;
-    height: 80vh;
+    width: 65vw;
+    height: 60vh;
     background-color: #cfcaca;
     border-radius: 8px;
     box-shadow: 10px 25px 115px 59px rgba(207, 202, 202, 0.75);
@@ -24,7 +23,6 @@ body {
 }
 
 .intro {
-    border: 1px solid black;
     color: #4A4453;
     font-family: 'Courier New', Courier, monospace;
     height: 90px;
@@ -41,7 +39,6 @@ body {
     font-family: cursive;
     margin: 0;
     font-size: 1.5rem;
-    /* padding-bottom: 10px; */
     color: #617788;
 }
 .intro > p > span {
@@ -62,35 +59,59 @@ body {
     background-color: silver;
 }
 
-.btn-container {
-    width: 100%;
-    height: 320px;
-    background-image: linear-gradient(to right bottom, #964b00, #bf5f4c, #d68089, #dfa6bd, #e6cee3, #e6daea, #e9e5ed, #efefef, #e3e3e3, #d7d7d7, #cccccc, #c0c0c0);
+.btn-score-container {
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 20px;
-    padding-bottom: 20px;
+    flex-direction: column;
+    gap: 5px;  
 }
 
-.btn-container > .btn > button { 
+.score {
+    width: 100%;
+    background-color: hsl(40, 75%, 92%);
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    padding: 0 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.btn-container {
+    background-color: white;
+    border: 2px solid whitesmoke;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-container  > button { 
     font-size: 1.2rem;
     padding: 5px 20px;
     border-radius: 8px;
     font-family: cursive;
     border: 1px solid #5d828f;
     line-height: 2rem;
-}
+    margin: 30px 0 ;
+    }
 
-.btn-container > .btn > button:hover {
-    color: white;
+.btn-container  button:hover {
     border: none;
     font-style: italic;
-    background-image: radial-gradient(circle, #00ff00, #00ff79, #00ffb7, #00ffe4, #00ffff);
 }
+
 
 .game-result > .txt {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    padding-top: 10px;
+    
+}
+
+.greenTxt,
+.playerScore {
+    color: green;
+}
+.redTxt,
+.computerScore {
+    color: red;
 }

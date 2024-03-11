@@ -15,18 +15,26 @@
             <p><span class="rock-txt">Rock</span> <span class="paper-txt">Paper</span> <span
                     class="scissors-txt">Scissors</span></p>
         </div>
-        <div class="btn-container">
-            <div class="btn"><button>play</button></div>
-            <!-- <div class="btn"><button>paper</button></div>
-            <div class="btn"><button>paper</button></div> -->
+        <div class="btn-score-container">
+            <div class="score">
+                <p >Player Score: <span class="playerScore">0</span></p>
+                <p >Computer Score: <span class="computerScore">0</span></p>
+            </div>
+
+            <div class="btn-container">
+                <button onclick="playRound('rock')" id="rock-btn">rock</button>
+                <button onclick="playRound('paper')" id="paper-btn">paper</button>
+                <button onclick="playRound('scissors')" id="scissors-btn">scissors</button>
+            </div>
         </div>
+
         <div class="game-result">
-            <p class="txt">5 round of rock paper scissors game against the <strong>COMPUTER</strong></p>
+            <p class="txt"><strong>YOU</strong> vs <strong>COMPUTER</strong></p>
         </div>
     </div>
 
 
-    <!-- <script src="./script.js"></script> -->
+<script src="./script.js"></script>
 </body>
 
 </html>
